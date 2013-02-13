@@ -145,3 +145,62 @@ var sum = function(array) {
 }
 
 // console.log(sum([6, 2, 3]));
+
+var exponent1 = function(number, power) {
+  if (power == 0) {
+    return 1;
+  }
+  else {
+    return number * exponent1(number, power - 1);
+  }
+}
+
+// console.log(exponent1(2, 3));
+
+var exponent2 = function(number, power) {
+  if (power == 0) {
+    return 1;
+  }
+  else if (power == 1) {
+    return number;
+  }
+  else {
+    return exponent2(number, Math.floor(power / 2.0)) * exponent2(number, Math.ceil(power / 2.0));
+  }
+}
+
+
+// console.log(exponent2(2, 5));
+
+var fibonacci = function(count) {
+  if (count == 1) {
+    return [0];
+  }
+  else if (count == 2) {
+    return [0, 1];
+  }
+  else {
+    var fib_list = fibonacci(count - 1);
+    var next_num = fib_list[fib_list.length - 1] + fib_list[fib_list.length - 2];
+    return fib_list.concat([next_num]);
+  }
+}
+
+// console.log(fibonacci(5));
+
+// doesn't work for out of range numbers
+var binary_search = function(array, target) {
+  mid = Math.floor(array.length/2);
+  if (array[mid] == target) {
+    return mid;
+  }
+  else if (array[mid] > target) {
+    return binary_search(array.slice(0, mid), target);
+  }
+  else {
+    return mid + binary_search(array.slice(mid, array.length), target);
+  }
+}
+
+var a = [1, 2, 3, 4, 5, 6, 7];
+console.log(binary_search(a, 1));
